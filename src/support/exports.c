@@ -138,6 +138,10 @@ static void StrExportOptions(export_perms_t *p_perms, char *buffer)
 	    EXPORT_OPTION_MANAGE_GIDS)
 		buf += sprintf(buf, ", Manage_Gids");
 
+	if ((p_perms->options & EXPORT_OPTION_USE_DELEG) == 
+            EXPORT_OPTION_USE_DELEG)
+                buf += sprintf(buf, ", DELEG");
+
 	buf += sprintf(buf, ", anon_uid=%d", (int)p_perms->anonymous_uid);
 	buf += sprintf(buf, ", anon_gid=%d", (int)p_perms->anonymous_gid);
 }
@@ -896,6 +900,8 @@ static struct config_item export_params[] = {
 	CONF_RELAX_BLOCK("FSAL", fsal_params,
 			 fsal_init, fsal_commit,
 			 exportlist, export_hdl),
+	CONF_ITEM_BOOL("UseDelegations", true,
+		       exportlist, UseDelegations),
 	CONFIG_EOL
 };
 

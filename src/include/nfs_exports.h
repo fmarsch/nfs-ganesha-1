@@ -135,6 +135,7 @@ typedef struct exportlist {
 	uint64_t MaxOffsetRead;	/*< Maximum Offset allowed for read */
 	uint64_t MaxCacheSize;	/*< Maximum Cache Size allowed */
 	bool UseCookieVerifier;	/*< Is Cookie verifier to be used? */
+	bool UseDelegations;	/*< Can delegations be granted? */
 	struct glist_head clients;	/*< Allowed clients */
 	struct fsal_export *export_hdl;	/*< Handle into our FSAL */
 
